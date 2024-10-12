@@ -1,0 +1,640 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styles */
+        .email-container {
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 25px;
+            width: 100%;
+        }
+
+        .email-text {
+            border: none;
+            background-color: #f1f1f1;
+            font-size: 1rem;
+            width: 70%;
+            color: black;
+            outline: none;
+            padding: 8px 12px;
+            box-shadow: none !important;
+            caret-color: transparent;
+        }
+
+        .copy-btn, .cv-btn {
+            border-radius: 25px;
+            background-color: white;
+            color: black;
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .copy-btn:hover, .cv-btn:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+
+        a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #6c757d;
+        }
+
+        .email-text:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 768px) {
+            .email-text {
+                width: 60%;
+            }
+        }
+
+        /* About section styles */
+        .about-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .name-animation {
+            font-size: 5rem;
+            font-weight: bold;
+            font-family: 'Lora', serif;
+            color: black;
+            border-right: 3px solid black;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(12, end) 1 forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        /* Keyframes for typing animation */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 13ch;
+            }
+        }
+
+        /* Caret blinking animation */
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: black;
+            }
+        }
+
+        .about-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .skill {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Ensure the animation and text are responsive */
+        @media (max-width : 768px) {
+            .name-animation {
+                font-size: 3rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Experience section styles */
+        .experience-section {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .experience-section {
+                text-align: center;
+            }
+        }
+
+        .terminal-box {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow-wrap: break-word;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .terminal-content {
+            white-space: pre-wrap;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: #333;
+        }
+
+
+        .skills-section h2 {
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: black;
+}
+
+.skills-section i {
+    transition: transform 0.3s ease;
+}
+
+.skills-section i:hover {
+    transform: scale(1.2);
+}
+
+.skills-section h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+.footer {
+    background-color: #343a40;
+}
+
+.footer p {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer .social-icons a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #6c757d; /* Change this color if you want a different hover effect */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode a {
+    color: #bb86fc;
+}
+
+body.dark-mode a:hover {
+    color: #bb86fc;
+    text-decoration: underline;
+}
+
+body.dark-mode .email-container {
+    background-color: #333;
+}
+
+body.dark-mode .copy-btn, body.dark-mode .cv-btn {
+    background-color: #444;
+    color: white;
+    border: 1px solid #bb86fc;
+}
+
+body.dark-mode .copy-btn:hover, body.dark-mode .cv-btn:hover {
+    background-color: #555;
+    color: white;
+    border: 1px solid #03dac5;
+}
+
+body.dark-mode .about-section, body.dark-mode .skills-section, body.dark-mode .experience-section {
+    background-color: #121212;
+}
+
+body.dark-mode .terminal-box {
+    background-color: #1f1f1f;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .skills-section h2,
+body.dark-mode .experience-section h2 {
+    color: #bb86fc;
+}
+
+body.dark-mode .footer {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .footer p {
+    color: #e0e0e0;
+}
+
+body.dark-mode .social-icons a {
+    color: #bb86fc;
+}
+
+body.dark-mode .social-icons a:hover {
+    color: #03dac5;
+}
+
+body.dark-mode .skills-section i {
+    color: #bb86fc;
+}
+
+body.dark-mode .skills-section i:hover {
+    color: #03dac5;
+}
+
+body.dark-mode #themeToggleBtn {
+    background-color: #444;
+    color: #ffffff;
+    border: 1px solid #03dac5;
+}
+
+body.dark-mode #themeToggleBtn:hover {
+    background-color: #555;
+    color: #ffffff;
+}
+
+/* Light Mode Improvements */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+a {
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.email-container {
+    background-color: #f1f1f1;
+}
+
+.copy-btn, .cv-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #007bff;
+}
+
+.copy-btn:hover, .cv-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.about-section, .skills-section, .experience-section {
+    background-color: #ffffff;
+}
+
+.terminal-box {
+    background-color: #f1f1f1;
+    border-color: #ddd;
+    color: #333;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    color: #010101;
+}
+
+.footer p {
+    color: #c7cace;
+}
+
+.social-icons a {
+    color: #007bff;
+}
+
+.social-icons a:hover {
+    color: #0056b3;
+}
+
+.skills-section i {
+    color: #0056b3;
+}
+
+.skills-section i:hover {
+    color: #0056b3;
+}
+
+#themeToggleBtn {
+    background-color: #f1f1f1;
+    color: #000000;
+    border: 1px solid #007bff;
+}
+
+#themeToggleBtn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Fix for the Experience Section text in dark mode */
+body.dark-mode .experience-section h2,
+body.dark-mode .experience-section .terminal-content {
+    color: #e0e0e0; /* Light text for readability */
+}
+
+/* Fix for the Name text ("Amaljith.k") in dark mode */
+body.dark-mode .name-animation {
+    color: #eeeeee; /* Make the name stand out in a vibrant color */
+    border-right-color: #bb86fc; /* Ensure the blinking caret is also visible */
+}
+
+/* Light Mode adjustments for the Experience Section */
+.experience-section h2,
+.experience-section .terminal-content {
+    color: #212529; /* Dark text for light mode */
+}
+
+/* Light Mode adjustments for the Name */
+.name-animation {
+    color: #212529; /* Dark text for the name in light mode */
+    border-right-color: #212529; /* Ensure the blinking caret is visible */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Copy section -->
+    <div class="container mt-4">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="email-container d-flex align-items-center">
+                    <input type="text" class="form-control email-text" value="amaljithkaliyodath@gmail.com" readonly>
+                    <button class="btn copy-btn ms-2">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <a href="templates/Amaljith k.pdf" target="_blank" class="btn cv-btn ms-2" download="Amaljith k.pdf">
+                        CV
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end text-center mt-3 mt-md-0">
+                <a href="https://www.linkedin.com/in/amaljith-kaliyodath/"  class="me-3">LinkedIn</a>
+                <a href="https://github.com/Amaljithkaliyodath"  class="me-3">GitHub</a>
+                <a href="https://dribbble.com/amalkaliyodath" class="me-3">Dribbble</a>
+                <a href="https://read.cv/amalkaliyodath" class="me-3">Read.cv</a>
+                <button class="btn btn-outline-dark" id="themeToggleBtn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i> <!-- Initially set to moon icon for dark mode -->
+                </button>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <!-- About section -->
+    <div class="about-section">
+        <div class="container">
+            <div class="name-animation mb-4">Amaljith.k</div>
+            <div class="about-text" id="about-text"></div>
+        </div>
+    </div>
+
+    <!-- Experience section -->
+    <section class="experience-section">
+        <h2>Experience Timeline</h2>
+        <div class="terminal-box">
+            <span class="year">July 17, 2024 - Aug 17, 2024</span>
+            <div class="terminal-content">
+                <span class="typing-effect" id="typingEffect1"></span>
+            </div>
+        </div>
+
+        <div class="terminal-box">
+            <span class="year">Nov 07,2023 - Dec 07,2023 </span>
+            <div class="terminal-content">
+                <span class="typing-effect" id="typingEffect2"></span>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Skill Section -->
+<section class="skills-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Skills</h2>
+        <div class="row text-center">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-html5 fa-3x text-primary"></i>
+                <h5 class="mt-2">HTML</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-css3-alt fa-3x text-info"></i>
+                <h5 class="mt-2">CSS</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-bootstrap fa-3x text-purple"></i>
+                <h5 class="mt-2">Bootstrap</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-js-square fa-3x text-warning"></i>
+                <h5 class="mt-2">JavaScript</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-python fa-3x text-success"></i>
+                <h5 class="mt-2">Python</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-python fa-3x text-success"></i>
+                <h5 class="mt-2">Django</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-git-alt fa-3x text-danger"></i>
+                <h5 class="mt-2">Git & GitHub</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fas fa-database fa-3x text-info"></i>
+                <h5 class="mt-2">MySQL</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-php fa-3x text-primary"></i>
+                <h5 class="mt-2">PHP</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fab fa-docker fa-3x text-dark"></i>
+                <h5 class="mt-2">Docker</h5>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="fas fa-paint-brush fa-3x text-pink"></i>
+                <h5 class="mt-2">Tailwind CSS</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer Section -->
+<footer class="footer bg-dark text-white py-4">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <p>&copy; 2024 Amaljith.k. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/amaljith-kaliyodath/" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="https://github.com/Amaljithkaliyodath" class="text-white me-3"><i class="fab fa-github fa-2x"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Copy button functionality
+        document.querySelector('.copy-btn').addEventListener('click', function() {
+            const emailText = document.querySelector('.email-text').value;
+            const copyButton = document.querySelector('.copy-btn');
+
+            navigator.clipboard.writeText(emailText).then(() => {
+                copyButton.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyButton.disabled = true;
+
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    copyButton.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // Typing animation for about text
+        const aboutText = " Python Full-Stack Web Developer with a passion for building user-centric, efficient digital solutions. Proficient in Django, HTML, CSS, and JavaScript, I create seamless and scalable applications that solve real-world problems.Looking ahead, I’m committed to expanding my skill set by exploring new technologies, including no-code tools and additional programming languages.";
+        const aboutTextElement = document.getElementById('about-text');
+        const words = aboutText.split(' ');
+        let i = 0;
+
+        function typeWord() {
+            if (i < words.length) {
+                let word = words[i];
+                if (['Python', 'Django', 'HTML', 'CSS', 'JavaScript'].includes(word)) {
+                    word = `<span class="skill">${word}</span>`;
+                }
+                aboutTextElement.innerHTML += word + ' ';
+                i++;
+                setTimeout(typeWord, 100); // Adjust typing speed here
+            }
+        }
+        setTimeout(typeWord, 3000); // 3000ms delay for name animation
+
+        // Typing animation for experience timeline
+        const contents = [
+            { text: " ExtraMindTech Worked in the API section for a trading app: Developed and maintained APIs for a trading platform, ensuring efficient data handling and secure transactions. Demonstrated technical proficiency and dedication: Known for being sincere, hardworking, and enthusiastic, contributing positively to the team environment. Exhibited excellent character and conduct: Maintained professional behavior, showing a positive attitude and strong work ethic" },
+            { text: " Synnefo Solutions - six-month course and one-month internship in full-stack Python Web development During this time, I gained experience working with front-end languages such HTML, CSS, and Bootstrap, as well as backend technologies including Python and Django." },
+        ];
+
+        let typingSpeed = 50;
+
+        function typeContent(content, elementId, callback) {
+            let i = 0;
+            function type() {
+                if (i < content.length) {
+                    document.getElementById(elementId).innerHTML += content.charAt(i);
+                    i++;
+                    setTimeout(type, typingSpeed);
+                } else if (callback) {
+                    setTimeout(callback, 500);
+                }
+            }
+            type();
+        }
+
+        function startTyping() {
+            typeContent(contents[0].text, 'typingEffect1', () => {
+                typeContent(contents[1].text, 'typingEffect2');
+            });
+        }
+
+        window.onload = function() {
+            startTyping();
+        };
+
+
+
+
+       
+ 
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const currentTheme = localStorage.getItem('theme');
+    const themeIcon = themeToggleBtn.querySelector('i');
+
+    // Load the saved theme from localStorage
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+
+    // Toggle theme on button click
+    themeToggleBtn.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        let theme = 'light';
+
+        // Change the icon and theme based on the current state
+        if (document.body.classList.contains('dark-mode')) {
+            theme = 'dark';
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        // Save the theme to localStorage
+        localStorage.setItem('theme', theme);
+    });
+
+
+    </script>
+</body>
+</html>
